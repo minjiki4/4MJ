@@ -11,7 +11,7 @@ namespace robot
 namespace {
 constexpr int kNeighborOffsets[8][2] = {
     {1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
-}  // namespace
+}
 
 PlannerCore::PlannerCore(const rclcpp::Logger& logger) : logger_(logger) {}
 
@@ -119,4 +119,4 @@ std::vector<geometry_msgs::msg::PoseStamped> PlannerCore::planPath(double start_
   return path;
 }
 
-}  // namespace robot
+}

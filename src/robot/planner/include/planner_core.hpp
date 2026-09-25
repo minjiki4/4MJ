@@ -44,7 +44,7 @@ struct CellIndexHash
 struct AStarNode
 {
   CellIndex index;
-  double f_score;  // g + h
+  double f_score;
 
   AStarNode(CellIndex idx, double f) : index(idx), f_score(f) {}
 };
@@ -59,7 +59,7 @@ struct CompareF
 };
 
 struct PlannerConfig {
-  int occupancy_threshold = 50;  // cost >= this value is treated as an obstacle
+  int occupancy_threshold = 50;
 };
 
 class PlannerCore {
@@ -71,8 +71,6 @@ class PlannerCore {
     void setMap(const nav_msgs::msg::OccupancyGrid& map);
     bool hasMap() const { return has_map_; }
 
-    // Runs A* from (start_x, start_y) to (goal_x, goal_y) in world coordinates.
-    // Returns an empty vector if no map is available or no path exists.
     std::vector<geometry_msgs::msg::PoseStamped> planPath(double start_x, double start_y,
                                                              double goal_x, double goal_y) const;
 
@@ -89,6 +87,6 @@ class PlannerCore {
     bool has_map_ = false;
 };
 
-}  // namespace robot
+}
 
 #endif

@@ -8,7 +8,7 @@ namespace {
 double quaternionToYaw(const geometry_msgs::msg::Quaternion& q) {
   return std::atan2(2.0 * (q.w * q.z + q.x * q.y), 1.0 - 2.0 * (q.y * q.y + q.z * q.z));
 }
-}  // namespace
+}
 
 ControlNode::ControlNode(): Node("control"), control_(robot::ControlCore(this->get_logger())) {
   robot::ControlConfig config;

@@ -13,7 +13,7 @@ Link to Onboarding Assignment: https://wiki.watonomous.ca/
 
 ## Implementation
 
-*(Everything below this point is specific to our submission -- the section above is the original assignment template.)*
+The section below covers the submitted implementation, separate from the assignment template above.
 
 The robot stack (`src/robot/`) is split into four nodes that run together via `bringup_robot`:
 

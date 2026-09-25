@@ -10,10 +10,10 @@ namespace robot
 {
 
 struct ControlConfig {
-  double lookahead_distance = 1.0;  // meters
-  double goal_tolerance = 0.2;      // meters
-  double linear_speed = 0.5;        // m/s
-  double max_angular_speed = 2.0;   // rad/s
+  double lookahead_distance = 1.0;
+  double goal_tolerance = 0.2;
+  double linear_speed = 0.5;
+  double max_angular_speed = 2.0;
 };
 
 class ControlCore {
@@ -22,7 +22,6 @@ class ControlCore {
 
     void configure(const ControlConfig& config);
 
-    // zero Twist if path is empty or the goal's already reached
     geometry_msgs::msg::Twist computeVelocity(const nav_msgs::msg::Path& path,
                                                double robot_x, double robot_y, double robot_yaw) const;
 
@@ -35,6 +34,6 @@ class ControlCore {
     ControlConfig config_;
 };
 
-}  // namespace robot
+}
 
 #endif

@@ -31,7 +31,7 @@ void MapMemoryCore::fuseCostmap(const nav_msgs::msg::OccupancyGrid& local_costma
   for (int row = 0; row < static_cast<int>(info.height); ++row) {
     for (int col = 0; col < static_cast<int>(info.width); ++col) {
       const int8_t value = local_costmap.data[row * info.width + col];
-      if (value < 0) continue;  // unknown cell: retain whatever the global map already has
+      if (value < 0) continue;
 
       const double local_x = info.origin.position.x + (col + 0.5) * info.resolution;
       const double local_y = info.origin.position.y + (row + 0.5) * info.resolution;
@@ -64,4 +64,4 @@ nav_msgs::msg::OccupancyGrid MapMemoryCore::buildOccupancyGrid(const rclcpp::Tim
   return msg;
 }
 
-}  // namespace robot
+}

@@ -10,10 +10,10 @@ namespace robot
 {
 
 struct CostmapConfig {
-  double resolution = 0.1;   // meters per cell
-  int width = 300;           // cells
-  int height = 300;          // cells
-  double inflation_radius = 1.0;  // meters
+  double resolution = 0.1;
+  int width = 300;
+  int height = 300;
+  double inflation_radius = 1.0;
   int8_t max_cost = 100;
 };
 
@@ -25,7 +25,6 @@ class CostmapCore {
 
     void initializeCostmap();
 
-    // false if (grid_x, grid_y) lands off the grid
     bool rangeToGrid(double range, double angle, int& grid_x, int& grid_y) const;
 
     void markObstacle(int grid_x, int grid_y);
@@ -44,6 +43,6 @@ class CostmapCore {
     std::vector<int8_t> grid_;
 };
 
-}  // namespace robot
+}
 
 #endif

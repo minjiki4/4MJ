@@ -11,10 +11,10 @@ namespace robot
 {
 
 struct MapMemoryConfig {
-  double resolution = 0.1;   // meters per cell
-  int width = 300;           // cells
-  int height = 300;          // cells
-  double update_distance = 1.5;  // meters before re-fusing
+  double resolution = 0.1;
+  int width = 300;
+  int height = 300;
+  double update_distance = 1.5;
 };
 
 class MapMemoryCore {
@@ -23,7 +23,6 @@ class MapMemoryCore {
 
     void configure(const MapMemoryConfig& config);
 
-    // transforms local_costmap into the global frame and overwrites those cells
     void fuseCostmap(const nav_msgs::msg::OccupancyGrid& local_costmap,
                       double robot_x, double robot_y, double robot_yaw);
 
@@ -41,6 +40,6 @@ class MapMemoryCore {
     std::vector<int8_t> grid_;
 };
 
-}  // namespace robot
+}
 
 #endif
