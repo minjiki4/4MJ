@@ -1,6 +1,6 @@
 planner_node:
   ros__parameters:
     occupancy_threshold: 50
-    goal_tolerance: 0.5
+    goal_tolerance: 0.3
     timer_period: 0.5
     global_frame: "sim_world"

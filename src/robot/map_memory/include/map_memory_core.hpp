@@ -14,7 +14,7 @@ struct MapMemoryConfig {
   double resolution = 0.1;   // meters per cell
   int width = 300;           // cells
   int height = 300;          // cells
-  double update_distance = 1.5;  // meters the robot must travel before fusing a new costmap
+  double update_distance = 1.5;  // meters before re-fusing
 };
 
 class MapMemoryCore {
@@ -23,8 +23,7 @@ class MapMemoryCore {
 
     void configure(const MapMemoryConfig& config);
 
-    // Transforms local_costmap into the global frame using the robot pose at capture time,
-    // then overwrites the corresponding cells of the global map.
+    // transforms local_costmap into the global frame and overwrites those cells
     void fuseCostmap(const nav_msgs::msg::OccupancyGrid& local_costmap,
                       double robot_x, double robot_y, double robot_yaw);
 

@@ -40,7 +40,7 @@ void CostmapCore::markObstacle(int grid_x, int grid_y) {
 void CostmapCore::inflateObstacles() {
   const int radius_cells = static_cast<int>(std::ceil(config_.inflation_radius / config_.resolution));
 
-  // Snapshot the obstacle cells first so inflated cells never act as new sources.
+  // snapshot first, otherwise inflated cells would feed back in as sources
   std::vector<std::pair<int, int>> obstacles;
   for (int y = 0; y < config_.height; ++y) {
     for (int x = 0; x < config_.width; ++x) {

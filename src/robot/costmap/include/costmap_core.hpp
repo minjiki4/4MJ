@@ -19,16 +19,13 @@ struct CostmapConfig {
 
 class CostmapCore {
   public:
-    // Constructor, we pass in the node's RCLCPP logger to enable logging to terminal
     explicit CostmapCore(const rclcpp::Logger& logger);
 
     void configure(const CostmapConfig& config);
 
-    // Resets every cell to free space (0).
     void initializeCostmap();
 
-    // Converts a polar laser reading into grid coordinates centered on the robot.
-    // Returns false if the resulting cell falls outside the grid.
+    // false if (grid_x, grid_y) lands off the grid
     bool rangeToGrid(double range, double angle, int& grid_x, int& grid_y) const;
 
     void markObstacle(int grid_x, int grid_y);

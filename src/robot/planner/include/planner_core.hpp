@@ -11,8 +11,6 @@
 namespace robot
 {
 
-// ------------------- Supporting Structures -------------------
-
 // 2D grid index
 struct CellIndex
 {
@@ -33,7 +31,7 @@ struct CellIndex
   }
 };
 
-// Hash function for CellIndex so it can be used in std::unordered_map
+// so CellIndex works as an unordered_map key
 struct CellIndexHash
 {
   std::size_t operator()(const CellIndex &idx) const
@@ -42,16 +40,16 @@ struct CellIndexHash
   }
 };
 
-// Structure representing a node in the A* open set
+// A* open-set node
 struct AStarNode
 {
   CellIndex index;
-  double f_score;  // f = g + h
+  double f_score;  // g + h
 
   AStarNode(CellIndex idx, double f) : index(idx), f_score(f) {}
 };
 
-// Comparator for the priority queue (min-heap by f_score)
+// min-heap by f_score
 struct CompareF
 {
   bool operator()(const AStarNode &a, const AStarNode &b)

@@ -23,8 +23,8 @@ geometry_msgs::msg::Point ControlCore::findLookaheadPoint(const nav_msgs::msg::P
   robot_point.x = robot_x;
   robot_point.y = robot_y;
 
-  // Start the scan from whichever path pose is currently closest to the robot,
-  // so a path that loops back near itself doesn't pick a lookahead point behind us.
+  // start from the closest pose, not index 0 -- otherwise a path that loops
+  // back near itself could pick a lookahead point behind the robot
   size_t closest_index = 0;
   double closest_distance = std::numeric_limits<double>::max();
   for (size_t i = 0; i < path.poses.size(); ++i) {
@@ -63,7 +63,7 @@ geometry_msgs::msg::Twist ControlCore::computeVelocity(const nav_msgs::msg::Path
 
   const auto target = findLookaheadPoint(path, robot_x, robot_y);
 
-  // Transform the target into the robot's local frame.
+  // to robot-local frame
   const double dx = target.x - robot_x;
   const double dy = target.y - robot_y;
   const double local_x = dx * std::cos(robot_yaw) + dy * std::sin(robot_yaw);

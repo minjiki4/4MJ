@@ -3,6 +3,6 @@ costmap_node:
     resolution: 0.1
     width: 300
     height: 300
-    inflation_radius: 1.0
+    inflation_radius: 1.6
     max_cost: 100
     robot_frame: "robot/chassis/lidar"

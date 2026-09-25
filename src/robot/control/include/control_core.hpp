@@ -18,13 +18,11 @@ struct ControlConfig {
 
 class ControlCore {
   public:
-    // Constructor, we pass in the node's RCLCPP logger to enable logging to terminal
     ControlCore(const rclcpp::Logger& logger);
 
     void configure(const ControlConfig& config);
 
-    // Computes the velocity command that steers the robot along path.
-    // Returns a zero Twist when the path is empty or the robot has reached its final pose.
+    // zero Twist if path is empty or the goal's already reached
     geometry_msgs::msg::Twist computeVelocity(const nav_msgs::msg::Path& path,
                                                double robot_x, double robot_y, double robot_yaw) const;
 
